@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quick Login — Acceso rápido con PIN</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+  <!-- Pantalla: crear PIN (primera vez) -->
+  <section id="screen-setup" class="screen">
+    <div class="card">
+      <h1>Crea tu PIN de acceso</h1>
+      <p class="subtitle" id="setup-subtitle">Este PIN queda guardado solo en este dispositivo y reemplaza escribir tu contraseña cada vez.</p>
+      <div class="dots" id="setup-dots"></div>
+      <div class="keypad" id="setup-keypad"></div>
+      <p class="hint">Elige 4 dígitos</p>
+    </div>
+  </section>
+
+  <!-- Pantalla: desbloquear con PIN -->
+  <section id="screen-unlock" class="screen hidden">
+    <div class="card">
+      <div class="avatar-lock">🔒</div>
+      <h1>Ingresa tu PIN</h1>
+      <p class="subtitle" id="unlock-subtitle">Desbloquea este dispositivo para continuar</p>
+      <div class="dots" id="unlock-dots"></div>
+      <div class="keypad" id="unlock-keypad"></div>
+      <p class="error hidden" id="unlock-error"></p>
+      <button class="link-btn" id="btn-reset-pin">Olvidé mi PIN / reiniciar demo</button>
+    </div>
+  </section>
+
+  <!-- Pantalla: selector de cuentas -->
+  <section id="screen-chooser" class="screen hidden">
+    <div class="card wide">
+      <h1>Elige una cuenta</h1>
+      <p class="subtitle">Desbloqueaste el dispositivo. Ahora solo elige con qué cuenta quieres entrar.</p>
+      <ul class="account-list" id="account-list"></ul>
+      <button class="account-item add-account" id="btn-add-account">
+        <span class="avatar avatar-plus">+</span>
+        <span class="account-text">
+          <strong>Usar otra cuenta</strong>
+          <small>Google, Microsoft u otro correo</small>
+        </span>
+      </button>
+      <button class="link-btn" id="btn-lock-again">Bloquear dispositivo</button>
+    </div>
+  </section>
+
+  <!-- Pantalla: agregar cuenta (elegir proveedor) -->
+  <section id="screen-add" class="screen hidden">
+    <div class="card">
+      <h1>Agregar cuenta</h1>
+      <p class="subtitle">Elige el proveedor con el que quieres iniciar sesión</p>
+      <div class="provider-list">
+        <button class="provider-btn" data-provider="google">
+          <span class="provider-icon google">G</span> Continuar con Google
+        </button>
+        <button class="provider-btn" data-provider="microsoft">
+          <span class="provider-icon microsoft">M</span> Continuar con Microsoft
+        </button>
+        <button class="provider-btn" data-provider="other">
+          <span class="provider-icon other">@</span> Usar otro correo
+        </button>
+      </div>
+      <button class="link-btn" id="btn-cancel-add">Cancelar</button>
+    </div>
+  </section>
+
+  <!-- Pantalla: consentimiento simulado -->
+  <section id="screen-consent" class="screen hidden">
+    <div class="card">
+      <div class="provider-icon-lg" id="consent-icon">G</div>
+      <h1 id="consent-title">Continuar con Google</h1>
+      <p class="subtitle" id="consent-subtitle">(Simulado) Ingresa un nombre para esta cuenta de prueba</p>
+      <input type="text" id="consent-input" class="text-input" placeholder="ej. ana.perez@gmail.com" maxlength="40">
+      <button class="primary-btn" id="btn-confirm-consent">Aceptar y vincular</button>
+      <button class="link-btn" id="btn-cancel-consent">Cancelar</button>
+    </div>
+  </section>
+
+  <!-- Pantalla: sesión iniciada -->
+  <section id="screen-home" class="screen hidden">
+    <div class="card">
+      <div class="avatar avatar-lg" id="home-avatar"></div>
+      <h1 id="home-title">¡Sesión iniciada!</h1>
+      <p class="subtitle" id="home-subtitle"></p>
+      <p class="hint">Todo esto sin volver a escribir usuario ni contraseña: solo tu PIN + un toque.</p>
+      <button class="primary-btn" id="btn-switch-account">Cambiar de cuenta</button>
+      <button class="link-btn" id="btn-lock-home">Bloquear dispositivo</button>
+    </div>
+  </section>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
