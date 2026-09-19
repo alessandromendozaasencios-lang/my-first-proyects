@@ -186,28 +186,11 @@
     color:var(--on-dark-accent);
     margin-bottom:18px;
   }
-  .now-pair{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:16px;
-  }
-  .now-col{
-    background:rgba(255,255,255,0.1);
-    border-radius:14px;
-    padding:16px 14px;
-  }
-  .now-label{
-    display:block;
-    font-size:0.7rem;
-    text-transform:uppercase;
-    letter-spacing:0.12em;
-    color:var(--on-dark-accent);
-    margin-bottom:8px;
-  }
-  .now-col p{
+  .now-text{
     margin:0;
-    font-size:0.92rem;
-    line-height:1.5;
+    font-size:1rem;
+    line-height:1.6;
+    text-align:center;
   }
   .now-others{
     margin-top:24px;
@@ -222,30 +205,49 @@
   }
   .now-row{
     display:grid;
-    grid-template-columns:56px 1fr 1fr;
+    grid-template-columns:56px 1fr;
     gap:10px;
     align-items:start;
     padding:10px 0;
     border-top:1px solid var(--pink-border);
     font-size:0.82rem;
+    color:var(--muted);
   }
   .now-row-hour{
     font-weight:bold;
-    color:var(--blue-deep);
     font-variant-numeric:tabular-nums;
   }
   .now-row p{ margin:0; line-height:1.4; }
-  .pending-note{
+
+  /* ---------- Canciones ---------- */
+  .track-list{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+  .track-item{
+    background:rgba(255,255,255,0.55);
+    border:1px solid var(--pink-border);
+    border-radius:16px;
+    padding:16px 18px;
+  }
+  .track-title{
+    font-weight:bold;
+    color:var(--ink);
+    font-size:0.95rem;
+    margin-bottom:4px;
+  }
+  .track-note{
     color:var(--muted);
+    font-size:0.85rem;
     font-style:italic;
   }
-
-  /* ---------- Canción ---------- */
   .spotify-embed-wrap{
     border-radius:14px;
     overflow:hidden;
     max-width:100%;
     border:1px solid var(--pink-border);
+    margin-top:12px;
   }
   .spotify-embed-wrap iframe{
     width:100%;
@@ -288,14 +290,33 @@
   }
 
   /* ---------- La carta ---------- */
-  .letter-placeholder{
-    border:1px dashed var(--pink-border);
-    border-radius:16px;
-    padding:36px 22px;
-    text-align:center;
-    color:var(--muted);
+  .letter-card{
+    max-width:560px;
+    margin:0 auto;
+  }
+  .letter-card p{
+    font-size:1.02rem;
+    line-height:1.85;
+    color:var(--ink);
+    margin:0 0 20px;
+  }
+  .letter-sign{
+    text-align:right;
     font-style:italic;
-    font-size:0.9rem;
+    color:var(--blue-deep);
+    margin-top:24px;
+  }
+  .closing-countdown{
+    max-width:260px;
+    margin:44px auto 0;
+    background:rgba(255,255,255,0.55);
+    border:1px solid var(--pink-border);
+    border-radius:16px;
+    padding:26px 18px;
+    text-align:center;
+  }
+  .closing-countdown .countdown-num{
+    font-size:clamp(2rem,7vw,2.8rem);
   }
 
   /* ---------- Frase de Isa ---------- */
@@ -319,9 +340,7 @@
   }
 
   @media (max-width:480px){
-    .now-pair{ grid-template-columns:1fr; }
     .now-row{ grid-template-columns:44px 1fr; }
-    .now-row > p:last-child{ grid-column:2; }
   }
 </style>
 </head>
@@ -381,29 +400,20 @@
   </section>
 
   <!-- ================= AHORA MISMO ================= -->
+  <!-- Solo el lado de Ale, a pedido suyo: no sabe con certeza qué hace Isa a
+       cada hora y no quiere inventarlo. La constante es que piensa en ella. -->
   <section id="now">
     <div class="eyebrow">03 — Ahora mismo</div>
-    <h2 class="section-title">A esta hora</h2>
-    <p class="section-lead">Según la hora de tu reloj, ahora mismo</p>
+    <h2 class="section-title">A esta hora, yo…</h2>
+    <p class="section-lead">Según la hora de tu reloj</p>
     <div class="now-current">
       <div class="now-hour" id="now-hour-label">—</div>
-      <div class="now-pair">
-        <div class="now-col">
-          <span class="now-label">Ale</span>
-          <p id="now-el">—</p>
-        </div>
-        <div class="now-col">
-          <span class="now-label">Isa</span>
-          <p id="now-ella">—</p>
-        </div>
-      </div>
+      <p class="now-text" id="now-texto">—</p>
     </div>
     <div class="now-others">
       <div class="now-others-title">El resto del día</div>
       <div id="now-others-list"></div>
     </div>
-    <!-- [PENDIENTE] Ale debe completar los bloques de 11:00 am, 1:00 pm y 4:00 pm.
-         El array `rutina` en el script ya tiene esos huecos preparados (pending: true). -->
   </section>
 
   <!-- ================= LO QUE VIENE ================= -->
@@ -426,34 +436,56 @@
     </div>
   </section>
 
-  <!-- ================= LA CARTA ================= -->
-  <!-- [PENDIENTE] Ale todavía no ha escrito la carta. Este bloque se deja
-       maquetado y vacío a propósito — es la única parte de la página que
-       tiene que salir íntegra de él. No completar aquí. -->
-  <section id="letter">
-    <div class="eyebrow">05 — La carta</div>
-    <h2 class="section-title">&nbsp;</h2>
-    <div class="letter-placeholder">(espacio reservado para la carta)</div>
-  </section>
-
-  <!-- ================= CANCIÓN ================= -->
-  <!-- Briefing sección 6: canción favorita de Isa, "Congratulations" (feat. Bilal)
-       de Mac Miller. Track ID tomado de Spotify; hay varias reediciones del mismo
-       tema con IDs distintos — si Ale prefiere otra versión/región, solo hay que
-       cambiar el ID en la URL del iframe. Sin autoplay. -->
-  <section id="song">
-    <div class="eyebrow">Su canción favorita</div>
-    <h2 class="section-title">"Congratulations" — Mac Miller</h2>
-    <div class="spotify-embed-wrap">
-      <iframe
-        src="https://open.spotify.com/embed/track/0ZgD0Gm06UGqQhbaBfKG9Z"
-        width="100%"
-        height="152"
-        frameborder="0"
-        allow="encrypted-media"
-        loading="lazy"
-        title="Congratulations (feat. Bilal) — Mac Miller, en Spotify">
-      </iframe>
+  <!-- ================= CANCIONES ================= -->
+  <!-- Track IDs de Spotify verificados uno por uno. "Money" y "Moonlight on the
+       River" (Strawberry Guy) no se pudieron confirmar con certeza en Spotify
+       (hay varios títulos iguales de otros artistas), así que quedan como texto
+       en vez de arriesgar un embed equivocado. Sin autoplay en ningún caso. -->
+  <section id="music">
+    <div class="eyebrow">05 — Nuestras canciones</div>
+    <h2 class="section-title">Lo que sonamos</h2>
+    <div class="track-list">
+      <div class="track-item">
+        <div class="track-title">Ariana Grande · Romeo Santos</div>
+        <div class="track-note">Lo que ella escucha.</div>
+      </div>
+      <!-- [PENDIENTE] No se pudo confirmar con certeza cuál "Money" en Spotify
+           (hay varias canciones con ese título, de distintos artistas). -->
+      <div class="track-item">
+        <div class="track-title">"Money"</div>
+        <div class="track-note">De los dos.</div>
+      </div>
+      <!-- [PENDIENTE] No se encontró con certeza esta canción de Strawberry Guy
+           en Spotify (aparece una de Mac DeMarco con el mismo nombre, pero es
+           de otro artista). Confirmar el link exacto antes de publicar. -->
+      <div class="track-item">
+        <div class="track-title">"Moonlight on the River" — Strawberry Guy</div>
+        <div class="track-note">De los dos.</div>
+      </div>
+      <div class="track-item">
+        <div class="track-title">"Congratulations" — Mac Miller</div>
+        <div class="track-note">Su canción favorita.</div>
+        <div class="spotify-embed-wrap">
+          <iframe
+            src="https://open.spotify.com/embed/track/0ZgD0Gm06UGqQhbaBfKG9Z"
+            width="100%" height="152" frameborder="0"
+            allow="encrypted-media" loading="lazy"
+            title="Congratulations (feat. Bilal) — Mac Miller, en Spotify">
+          </iframe>
+        </div>
+      </div>
+      <div class="track-item">
+        <div class="track-title">"Young and Beautiful" — Lana Del Rey</div>
+        <div class="track-note">La que elegiste tú, para cuando nos casemos.</div>
+        <div class="spotify-embed-wrap">
+          <iframe
+            src="https://open.spotify.com/embed/track/21EyMVJf9gq0nIfaBhSGiF"
+            width="100%" height="152" frameborder="0"
+            allow="encrypted-media" loading="lazy"
+            title="Young and Beautiful — Lana Del Rey, en Spotify">
+          </iframe>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -463,6 +495,26 @@
   <section id="quote">
     <blockquote class="isa-quote">"Eres un tonto tonto tonto tonto amorcito lindo."</blockquote>
     <p class="quote-attr">— Isa</p>
+  </section>
+
+  <!-- ================= LA CARTA (cierre de la página) ================= -->
+  <!-- Texto final dado por Ale tal cual, sin editar. -->
+  <section id="letter">
+    <div class="eyebrow">Para ti</div>
+    <div class="letter-card">
+      <p>María,</p>
+      <p>Te amo de una forma que solo yo sé hacerlo. Llegaste a romper mi mundo por dentro y a reescribirlo entero.</p>
+      <p>En medio de todo el ruido, cruzarme contigo fue lo único que me pasó de verdad. Eras una estrella perdida y terminaste encendiendo todo.</p>
+      <p>No te ofrezco un cuento de hadas. Te doy estos once meses, mi terquedad, y un corazón crudo que es tuyo.</p>
+      <p>Tus ojos son el único lugar donde elijo quedarme.</p>
+      <p>Y si el tiempo o la distancia vuelven a intentarlo, porque ya lo intentaron, mi corazón va a seguir latiendo con tu nombre.</p>
+      <p class="letter-sign">— Ale</p>
+    </div>
+    <div class="closing-countdown">
+      <span class="countdown-num" id="cd-closing">—</span>
+      <div class="countdown-unit">días</div>
+      <div class="countdown-label">hasta que te vuelva a ver</div>
+    </div>
   </section>
 
 </main>
@@ -508,29 +560,20 @@
   setInterval(updateMainCounter, 1000);
 
   // ---------------------------------------------------------------
-  // Ahora mismo — rutina diaria, según la hora real del visitante
+  // Ahora mismo — solo el lado de Ale (a pedido suyo), según la hora
+  // real del visitante. La constante en cada bloque: piensa en ella.
   // ---------------------------------------------------------------
   const rutina = [
-    { hora: 0,  el: "Ale se queda dormido primero — la universidad y el gimnasio le ganan.",
-                ella: "Isa sigue despierta un rato más." },
-    { hora: 6,  el: "Ale ya está despierto, alistándose para la universidad.",
-                ella: "Isa todavía duerme. Antes se despertaba primero — hasta que llegó la Alexa a poner sus alarmas." },
-    // [PENDIENTE] Ale debe mandar qué hace cada uno a las 11:00 am.
-    { hora: 11, pending: true },
-    // [PENDIENTE] Ale debe mandar qué hace cada uno a la 1:00 pm.
-    { hora: 13, pending: true },
-    // [PENDIENTE] Ale debe mandar qué hace cada uno a las 4:00 pm.
-    { hora: 16, pending: true },
-    { hora: 20, el: "Ale vuelve de la universidad.",
-                ella: "Isa vuelve del gimnasio." },
-    { hora: 21, el: "Ale espera.",
-                ella: "Isa se lava la cara. Él espera a que termine, siempre." },
-    { hora: 23, el: "Ale llama.",
-                ella: "Isa contesta. Es la llamada de todas las noches, a las 11." },
+    { hora: 6,  texto: "Me despierto y me voy a la universidad." },
+    { hora: 11, texto: "Me estoy quedando dormido en clase, pensando en ti." },
+    { hora: 13, texto: "Vuelvo a casa emocionado porque por fin terminaron mis clases y ya puedo hablar contigo." },
+    { hora: 16, texto: "Estudiando para un examen, en un proyecto o en alguna conferencia. Pensando en qué estarás haciendo tú." },
+    { hora: 20, texto: "Vuelvo de la universidad. Tú vuelves del gimnasio. Te espero mientras te lavas la cara." },
+    { hora: 23, texto: "Te llamo. Nos dormimos juntos por llamada, como todas las noches." },
   ];
 
-  function getCurrentPair(h){
-    let current = rutina[0];
+  function getCurrentBlock(h){
+    let current = rutina[rutina.length - 1]; // antes de las 6am sigue corriendo el bloque de las 23:00
     for(let i = 0; i < rutina.length; i++){
       if(rutina[i].hora <= h) current = rutina[i];
       else break;
@@ -540,22 +583,10 @@
 
   function renderNow(){
     const h = new Date().getHours();
-    const current = getCurrentPair(h);
+    const current = getCurrentBlock(h);
 
     document.getElementById('now-hour-label').textContent = pad(current.hora) + ':00';
-    const nowElEl = document.getElementById('now-el');
-    const nowEllaEl = document.getElementById('now-ella');
-    if(current.pending){
-      nowElEl.textContent = 'Pendiente.';
-      nowElEl.classList.add('pending-note');
-      nowEllaEl.textContent = 'Pendiente.';
-      nowEllaEl.classList.add('pending-note');
-    } else {
-      nowElEl.textContent = current.el;
-      nowElEl.classList.remove('pending-note');
-      nowEllaEl.textContent = current.ella;
-      nowEllaEl.classList.remove('pending-note');
-    }
+    document.getElementById('now-texto').textContent = current.texto;
 
     const othersEl = document.getElementById('now-others-list');
     othersEl.innerHTML = '';
@@ -565,20 +596,10 @@
       const hourEl = document.createElement('div');
       hourEl.className = 'now-row-hour';
       hourEl.textContent = pad(r.hora) + ':00';
+      const textEl = document.createElement('p');
+      textEl.textContent = r.texto;
       row.appendChild(hourEl);
-      if(r.pending){
-        const p = document.createElement('p');
-        p.className = 'pending-note';
-        p.textContent = 'Pendiente.';
-        row.appendChild(p);
-      } else {
-        const pEl = document.createElement('p');
-        pEl.textContent = 'Ale: ' + r.el;
-        const pElla = document.createElement('p');
-        pElla.textContent = 'Isa: ' + r.ella;
-        row.appendChild(pEl);
-        row.appendChild(pElla);
-      }
+      row.appendChild(textEl);
       othersEl.appendChild(row);
     });
   }
@@ -601,6 +622,7 @@
   function updateCountdowns(){
     document.getElementById('cd-reunion').textContent = daysUntil(REENCUENTRO);
     document.getElementById('cd-anio').textContent = daysUntil(UN_ANIO);
+    document.getElementById('cd-closing').textContent = daysUntil(REENCUENTRO);
   }
   updateCountdowns();
   setInterval(updateCountdowns, 60 * 1000);
