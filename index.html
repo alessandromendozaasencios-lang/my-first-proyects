@@ -3,630 +3,512 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Para Maria Isabel 💕</title>
+<title>Isa — once meses</title>
 <style>
   :root{
-    --pink-50:#fff5f7;
-    --pink-100:#ffe4ea;
-    --pink-300:#ffb3c6;
-    --pink-500:#ff6f91;
-    --pink-700:#d94f70;
-    --wine-800:#7a2e42;
-    --cream:#fffaf3;
-    --ink:#3a2230;
-    --gold:#e8b86d;
+    --night-900:#101a30;
+    --night-800:#182544;
+    --night-700:#23355c;
+    --pink-pale:#f3d9dd;
+    --pink-muted:#c9a3ab;
+    --border:rgba(243,217,221,0.16);
+    --text-light:#efe9e3;
+    --muted:#8b96b3;
   }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
   body{
     font-family:'Georgia','Times New Roman',serif;
-    background:linear-gradient(180deg,var(--pink-50) 0%,var(--cream) 40%,var(--pink-100) 100%);
-    color:var(--ink);
+    background:linear-gradient(180deg,var(--night-900) 0%,var(--night-800) 45%,var(--night-900) 100%);
+    color:var(--text-light);
     overflow-x:hidden;
     min-height:100vh;
   }
 
-  /* ---------- floating hearts / emoji background ---------- */
-  #floaters{
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    z-index:0;
-    overflow:hidden;
-  }
-  .floater{
-    position:absolute;
-    bottom:-10%;
-    font-size:1.4rem;
-    opacity:0.55;
-    animation:rise linear infinite;
-    filter:drop-shadow(0 0 6px rgba(255,111,145,0.25));
-  }
-  @keyframes rise{
-    0%{ transform:translateY(0) translateX(0) rotate(0deg); opacity:0; }
-    10%{ opacity:0.6; }
-    90%{ opacity:0.5; }
-    100%{ transform:translateY(-110vh) translateX(var(--drift,20px)) rotate(25deg); opacity:0; }
-  }
-
   main{
-    position:relative;
-    z-index:1;
     max-width:760px;
     margin:0 auto;
     padding:0 20px 80px;
   }
 
   section{
-    padding:70px 0;
-    border-bottom:1px dashed var(--pink-300);
+    padding:56px 0;
+    border-bottom:1px solid var(--border);
   }
   section:last-of-type{ border-bottom:none; }
 
+  .eyebrow{
+    letter-spacing:0.28em;
+    text-transform:uppercase;
+    font-size:0.7rem;
+    color:var(--pink-muted);
+    margin-bottom:14px;
+    text-align:center;
+  }
+
   /* ---------- Hero ---------- */
   #hero{
-    min-height:100vh;
+    min-height:60vh;
     display:flex;
     flex-direction:column;
     align-items:center;
     justify-content:center;
     text-align:center;
-    border-bottom:none;
-    padding:40px 0;
-  }
-  .kicker{
-    letter-spacing:0.35em;
-    text-transform:uppercase;
-    font-size:0.7rem;
-    color:var(--pink-700);
-    font-family:Georgia, serif;
-    margin-bottom:18px;
+    padding:60px 0 30px;
   }
   h1.hero-title{
-    font-size:clamp(2.2rem,7vw,3.6rem);
-    margin:0 0 10px;
-    color:var(--wine-800);
-    line-height:1.15;
+    font-size:clamp(2.4rem,8vw,3.8rem);
+    margin:0 0 6px;
+    color:var(--pink-pale);
+    line-height:1.1;
   }
   .hero-sub{
-    font-size:1.05rem;
-    color:var(--pink-700);
-    margin-bottom:36px;
+    font-size:1.4rem;
+    color:var(--pink-muted);
+    margin:0 0 26px;
   }
-  .heart-open{
-    font-size:3rem;
-    animation:pulse 1.8s ease-in-out infinite;
-    margin-bottom:28px;
-  }
-  @keyframes pulse{
-    0%,100%{ transform:scale(1); }
-    50%{ transform:scale(1.15); }
-  }
-  .scroll-hint{
-    margin-top:60px;
+  .hero-date{
     font-size:0.85rem;
-    color:var(--pink-500);
-    animation:bob 2s ease-in-out infinite;
-  }
-  @keyframes bob{
-    0%,100%{ transform:translateY(0); }
-    50%{ transform:translateY(8px); }
+    color:var(--muted);
   }
 
   /* ---------- Section headings ---------- */
   h2.section-title{
     text-align:center;
-    font-size:clamp(1.5rem,4vw,2rem);
-    color:var(--wine-800);
+    font-size:clamp(1.4rem,4vw,1.9rem);
+    color:var(--text-light);
     margin:0 0 8px;
-  }
-  .section-emoji{
-    display:block;
-    text-align:center;
-    font-size:1.8rem;
-    margin-bottom:6px;
   }
   .section-lead{
     text-align:center;
-    color:var(--pink-700);
-    font-size:0.95rem;
-    margin-bottom:40px;
-    font-style:italic;
+    color:var(--muted);
+    font-size:0.9rem;
+    margin-bottom:36px;
   }
 
-  /* ---------- Counter ---------- */
+  /* ---------- Live counter ---------- */
   #counter-grid{
     display:grid;
     grid-template-columns:repeat(4,1fr);
-    gap:14px;
+    gap:12px;
     max-width:520px;
     margin:0 auto;
   }
   .counter-box{
-    background:rgba(255,255,255,0.7);
-    border:1px solid var(--pink-300);
+    background:rgba(255,255,255,0.04);
+    border:1px solid var(--border);
     border-radius:16px;
-    padding:18px 6px;
+    padding:16px 4px;
     text-align:center;
-    backdrop-filter:blur(4px);
   }
   .counter-num{
-    font-size:clamp(1.6rem,5vw,2.4rem);
+    font-size:clamp(1.5rem,5vw,2.2rem);
     font-weight:bold;
-    color:var(--pink-700);
+    color:var(--pink-pale);
     display:block;
-    font-family:Georgia, serif;
+    font-variant-numeric:tabular-nums;
   }
   .counter-label{
-    font-size:0.7rem;
+    font-size:0.65rem;
     text-transform:uppercase;
     letter-spacing:0.08em;
-    color:var(--wine-800);
+    color:var(--muted);
     margin-top:4px;
   }
-  .since-date{
-    text-align:center;
-    margin-top:20px;
-    color:var(--pink-700);
-    font-size:0.85rem;
-  }
-
-  /* ---------- Letter ---------- */
-  .letter-card{
-    background:var(--cream);
-    border:1px solid var(--pink-300);
-    border-radius:20px;
-    padding:44px 32px;
-    box-shadow:0 10px 30px rgba(217,79,112,0.12);
-    position:relative;
-  }
-  .letter-card::before{
-    content:"❝";
-    position:absolute;
-    top:10px;
-    left:20px;
-    font-size:3rem;
-    color:var(--pink-300);
-    font-family:Georgia,serif;
-  }
-  .letter-text{
-    font-size:1.05rem;
-    line-height:1.9;
-    color:var(--ink);
-    white-space:pre-line;
-  }
-  .letter-sign{
-    text-align:right;
-    margin-top:28px;
-    font-style:italic;
-    color:var(--pink-700);
-  }
-
-  /* ---------- Gallery ---------- */
-  .gallery-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:14px;
-  }
-  .gallery-item{
-    aspect-ratio:1/1;
-    border-radius:16px;
-    overflow:hidden;
-    background:linear-gradient(135deg,var(--pink-100),var(--pink-300));
+  .fixed-stats{
     display:flex;
-    align-items:center;
     justify-content:center;
-    color:var(--wine-800);
-    font-size:0.8rem;
-    text-align:center;
-    padding:10px;
-    border:2px dashed var(--pink-500);
-    transition:transform 0.3s ease;
-    cursor:pointer;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:26px;
   }
-  .gallery-item:hover{ transform:scale(1.03) rotate(-1deg); }
-  .gallery-item img,.gallery-item video{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    display:block;
+  .fixed-stat{
+    background:var(--night-800);
+    border:1px solid var(--border);
+    color:var(--text-light);
+    border-radius:999px;
+    padding:8px 16px;
+    font-size:0.78rem;
+    letter-spacing:0.02em;
   }
-  .gallery-item.big{
-    grid-column:span 2;
-    aspect-ratio:2/1;
-  }
-  .placeholder-emoji{ font-size:1.6rem; margin-bottom:6px; display:block; }
+  .fixed-stat b{ color:var(--pink-pale); font-variant-numeric:tabular-nums; }
 
-  /* Lightbox */
-  #lightbox{
-    position:fixed;
-    inset:0;
-    background:rgba(58,34,48,0.9);
-    display:none;
-    align-items:center;
-    justify-content:center;
-    z-index:50;
+  .hitos-list{
+    list-style:none;
+    padding:0;
+    margin:22px auto 0;
+    max-width:420px;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+  .hitos-list li{
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+    font-size:0.85rem;
+    border-top:1px solid var(--border);
+    padding-top:8px;
+  }
+  .hitos-list li span:first-child{ color:var(--pink-pale); font-weight:bold; font-variant-numeric:tabular-nums; }
+  .hitos-list li span:last-child{ color:var(--muted); text-align:right; }
+
+  /* ---------- Map ---------- */
+  .map-wrap{
+    background:rgba(255,255,255,0.04);
+    border:1px solid var(--border);
+    border-radius:20px;
     padding:20px;
   }
-  #lightbox.open{ display:flex; }
-  #lightbox img, #lightbox video{
-    max-width:100%;
-    max-height:85vh;
-    border-radius:12px;
-    box-shadow:0 10px 40px rgba(0,0,0,0.4);
-  }
-  #lightbox-close{
-    position:absolute;
-    top:24px;
-    right:28px;
-    font-size:2rem;
-    color:var(--cream);
-    cursor:pointer;
-    background:none;
-    border:none;
+  .map-wrap svg{ width:100%; height:auto; display:block; }
+  .map-caption{
+    text-align:center;
+    font-size:0.8rem;
+    color:var(--muted);
+    margin-top:10px;
   }
 
-  /* ---------- Music player ---------- */
-  .player-card{
-    background:linear-gradient(135deg,var(--wine-800),var(--pink-700));
-    border-radius:22px;
-    padding:30px 24px;
-    color:var(--cream);
-    box-shadow:0 14px 34px rgba(122,46,66,0.35);
+  /* ---------- Ahora mismo ---------- */
+  .now-current{
+    background:linear-gradient(135deg,var(--night-800),var(--night-700));
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:28px 22px;
+    color:var(--text-light);
   }
-  .track-emoji{
-    text-align:center;
-    font-size:2.6rem;
-    margin-bottom:6px;
-    animation:spin-slow 8s linear infinite;
-    display:inline-block;
-    width:100%;
-  }
-  @keyframes spin-slow{ from{transform:rotate(0deg);} to{transform:rotate(360deg);} }
-  .track-title{
-    text-align:center;
-    font-size:1.2rem;
-    font-weight:bold;
-    margin-bottom:4px;
-  }
-  .track-index{
+  .now-hour{
     text-align:center;
     font-size:0.75rem;
-    letter-spacing:0.15em;
+    letter-spacing:0.2em;
     text-transform:uppercase;
-    color:var(--pink-100);
+    color:var(--pink-muted);
     margin-bottom:18px;
   }
-  .embed-wrap{
+  .now-pair{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+  }
+  .now-col{
+    background:rgba(255,255,255,0.1);
+    border-radius:14px;
+    padding:16px 14px;
+  }
+  .now-label{
+    display:block;
+    font-size:0.7rem;
+    text-transform:uppercase;
+    letter-spacing:0.12em;
+    color:var(--pink-pale);
+    margin-bottom:8px;
+  }
+  .now-col p{
+    margin:0;
+    font-size:0.92rem;
+    line-height:1.5;
+  }
+  .now-others{
+    margin-top:24px;
+  }
+  .now-others-title{
+    font-size:0.75rem;
+    text-transform:uppercase;
+    letter-spacing:0.12em;
+    color:var(--muted);
+    text-align:center;
+    margin-bottom:14px;
+  }
+  .now-row{
+    display:grid;
+    grid-template-columns:56px 1fr 1fr;
+    gap:10px;
+    align-items:start;
+    padding:10px 0;
+    border-top:1px solid var(--border);
+    font-size:0.82rem;
+  }
+  .now-row-hour{
+    font-weight:bold;
+    color:var(--pink-pale);
+    font-variant-numeric:tabular-nums;
+  }
+  .now-row p{ margin:0; line-height:1.4; }
+  .pending-note{
+    color:var(--muted);
+    font-style:italic;
+  }
+
+  /* ---------- Canción ---------- */
+  .spotify-embed-wrap{
     border-radius:14px;
     overflow:hidden;
-    margin-bottom:18px;
-    min-height:80px;
-    background:rgba(255,255,255,0.08);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    font-size:0.85rem;
-    padding:16px;
-    color:var(--pink-100);
+    max-width:100%;
+    border:1px solid var(--border);
   }
-  .embed-wrap iframe{ width:100%; border:0; display:block; }
-  .track-note{
-    background:rgba(255,255,255,0.1);
-    border-radius:12px;
-    padding:16px 18px;
-    font-size:0.95rem;
-    line-height:1.6;
-    font-style:italic;
-    margin-bottom:18px;
-  }
-  .player-controls{
-    display:flex;
-    justify-content:center;
-    gap:14px;
-  }
-  .player-controls button{
-    background:var(--cream);
-    color:var(--wine-800);
-    border:none;
-    border-radius:999px;
-    padding:10px 22px;
-    font-size:0.9rem;
-    font-weight:bold;
-    cursor:pointer;
-    font-family:inherit;
-    transition:transform 0.15s ease, background 0.15s ease;
-  }
-  .player-controls button:hover{
-    transform:translateY(-2px);
-    background:var(--gold);
-  }
-  .player-dots{
-    display:flex;
-    justify-content:center;
-    gap:8px;
-    margin-top:16px;
-  }
-  .player-dots span{
-    width:8px;
-    height:8px;
-    border-radius:50%;
-    background:rgba(255,255,255,0.35);
-    transition:background 0.2s ease;
-  }
-  .player-dots span.active{ background:var(--cream); }
-
-  /* ---------- Footer ---------- */
-  #footer{
-    text-align:center;
-    padding:60px 0 20px;
-    color:var(--pink-700);
-    font-size:0.9rem;
-  }
-  .footer-heart{
-    font-size:1.6rem;
-    margin-bottom:10px;
+  .spotify-embed-wrap iframe{
+    width:100%;
+    max-width:100%;
+    height:152px;
+    border:0;
     display:block;
+  }
+
+  /* ---------- Frase de Isa ---------- */
+  .isa-quote{
+    margin:0;
+    text-align:center;
+    font-style:italic;
+    font-size:clamp(1.2rem,4.5vw,1.6rem);
+    line-height:1.5;
+    color:var(--pink-pale);
+    max-width:520px;
+    margin:0 auto;
+  }
+  .quote-attr{
+    text-align:center;
+    margin:14px 0 0;
+    font-size:0.78rem;
+    text-transform:uppercase;
+    letter-spacing:0.2em;
+    color:var(--muted);
   }
 
   @media (max-width:480px){
-    #counter-grid{ gap:8px; }
-    .letter-card{ padding:32px 20px; }
+    .now-pair{ grid-template-columns:1fr; }
+    .now-row{ grid-template-columns:44px 1fr; }
+    .now-row > p:last-child{ grid-column:2; }
   }
 </style>
 </head>
 <body>
 
-<div id="floaters"></div>
-
 <main>
 
-  <!-- ================= HERO ================= -->
+  <!-- ================= HERO (mínimo, de contexto) ================= -->
   <section id="hero">
-    <div class="kicker">Feliz aniversario</div>
-    <div class="heart-open">💖</div>
-    <h1 class="hero-title">Para ti,<br>Maria Isabel</h1>
-    <p class="hero-sub">18 de cada mes, un motivo más para celebrarte ✨</p>
-    <div class="scroll-hint">↓ desliza para ver tu sorpresa ↓</div>
+    <div class="eyebrow">18 de septiembre de 2026</div>
+    <h1 class="hero-title">Isa.</h1>
+    <p class="hero-sub">Once meses.</p>
+    <p class="hero-date">Lima — Huaraz</p>
   </section>
 
-  <!-- ================= CONTADOR ================= -->
+  <!-- ================= CONTADOR EN VIVO + CIFRAS FIJAS ================= -->
   <section id="counter">
-    <span class="section-emoji">⏳</span>
-    <h2 class="section-title">Tiempo juntos</h2>
-    <p class="section-lead">Cada segundo contando desde que empezamos esta historia</p>
+    <div class="eyebrow">01 — El contador</div>
+    <h2 class="section-title">Desde el 18 de octubre, 11:30 pm</h2>
+    <p class="section-lead">Corriendo ahora mismo</p>
     <div id="counter-grid">
-      <div class="counter-box"><span class="counter-num" id="c-months">0</span><span class="counter-label">Meses</span></div>
-      <div class="counter-box"><span class="counter-num" id="c-days">0</span><span class="counter-label">Días</span></div>
-      <div class="counter-box"><span class="counter-num" id="c-hours">0</span><span class="counter-label">Horas</span></div>
-      <div class="counter-box"><span class="counter-num" id="c-mins">0</span><span class="counter-label">Minutos</span></div>
+      <div class="counter-box"><span class="counter-num" id="c-days">—</span><span class="counter-label">Días</span></div>
+      <div class="counter-box"><span class="counter-num" id="c-hours">—</span><span class="counter-label">Horas</span></div>
+      <div class="counter-box"><span class="counter-num" id="c-mins">—</span><span class="counter-label">Minutos</span></div>
+      <div class="counter-box"><span class="counter-num" id="c-secs">—</span><span class="counter-label">Segundos</span></div>
     </div>
-    <p class="since-date">Desde el 18 de octubre de 2025 💞</p>
+    <div class="fixed-stats">
+      <span class="fixed-stat"><b id="stat-same">129</b> días en la misma ciudad</span>
+      <span class="fixed-stat"><b id="stat-far">205</b> días a distancia</span>
+      <span class="fixed-stat"><b id="stat-km">287</b> km</span>
+    </div>
+    <ul class="hitos-list">
+      <li><span>25 feb 2026</span><span>La despedida</span></li>
+      <li><span>2 may 2026</span><span>Primer reencuentro</span></li>
+      <li><span>17–18 sep 2026</span><span>Segundo reencuentro</span></li>
+    </ul>
   </section>
 
-  <!-- ================= CARTA ================= -->
-  <section id="letter">
-    <span class="section-emoji">💌</span>
-    <h2 class="section-title">Una cartita para ti</h2>
-    <p class="section-lead">Lo que siento, puesto en palabras</p>
-    <div class="letter-card">
-      <p class="letter-text" id="letter-text">Maria Isabel,
+  <!-- ================= MAPA ================= -->
+  <section id="map">
+    <div class="eyebrow">02 — Los 287 km</div>
+    <h2 class="section-title">Pueblo Libre — Plaza de Belén</h2>
+    <p class="section-lead">Lima y Huaraz, en línea recta</p>
+    <div class="map-wrap">
+      <svg viewBox="0 0 320 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mapa esquemático entre Lima y Huaraz, 287 kilómetros de distancia">
+        <line x1="70" y1="150" x2="240" y2="45" stroke="#c9a3ab" stroke-width="2" stroke-dasharray="6 6"/>
+        <circle cx="70" cy="150" r="7" fill="#f3d9dd"/>
+        <circle cx="240" cy="45" r="7" fill="#f3d9dd"/>
+        <text x="70" y="172" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#efe9e3">Lima</text>
+        <text x="70" y="186" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#8b96b3">Pueblo Libre</text>
+        <text x="240" y="30" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#efe9e3">Huaraz</text>
+        <text x="240" y="20" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#8b96b3">Plaza de Belén</text>
+        <text id="map-distance-label" x="155" y="90" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="bold" fill="#f3d9dd">287 km</text>
+      </svg>
+    </div>
+    <p class="map-caption">Distancia en línea recta (haversine).</p>
+  </section>
 
-Hoy quiero recordarte lo importante que eres para mí. Desde el 18 de octubre nuestra historia empezó a escribirse, y cada día contigo se ha convertido en uno de mis motivos favoritos para sonreír.
+  <!-- ================= AHORA MISMO ================= -->
+  <section id="now">
+    <div class="eyebrow">03 — Ahora mismo</div>
+    <h2 class="section-title">A esta hora</h2>
+    <p class="section-lead">Según la hora de tu reloj, ahora mismo</p>
+    <div class="now-current">
+      <div class="now-hour" id="now-hour-label">—</div>
+      <div class="now-pair">
+        <div class="now-col">
+          <span class="now-label">Ale</span>
+          <p id="now-el">—</p>
+        </div>
+        <div class="now-col">
+          <span class="now-label">Isa</span>
+          <p id="now-ella">—</p>
+        </div>
+      </div>
+    </div>
+    <div class="now-others">
+      <div class="now-others-title">El resto del día</div>
+      <div id="now-others-list"></div>
+    </div>
+    <!-- [PENDIENTE] Ale debe completar los bloques de 11:00 am, 1:00 pm y 4:00 pm.
+         El array `rutina` en el script ya tiene esos huecos preparados (pending: true). -->
+  </section>
 
-[Aquí va nuestra historia: cómo nos conocimos, lo que más admiro de ti, y ese recuerdo que llevo siempre conmigo. Este espacio está listo para las palabras que quiero decirte de verdad.]
-
-Gracias por caminar a mi lado, por tu paciencia, por tu risa, y por hacer de lo simple algo especial. Este es solo un pedacito de todo lo que siento por ti.</p>
-      <p class="letter-sign">Con todo mi cariño 💕</p>
+  <!-- ================= CANCIÓN ================= -->
+  <!-- Briefing sección 6: canción favorita de Isa, "Congratulations" (feat. Bilal)
+       de Mac Miller. Track ID tomado de Spotify; hay varias reediciones del mismo
+       tema con IDs distintos — si Ale prefiere otra versión/región, solo hay que
+       cambiar el ID en la URL del iframe. Sin autoplay. -->
+  <section id="song">
+    <div class="eyebrow">Su canción favorita</div>
+    <h2 class="section-title">"Congratulations" — Mac Miller</h2>
+    <div class="spotify-embed-wrap">
+      <iframe
+        src="https://open.spotify.com/embed/track/0ZgD0Gm06UGqQhbaBfKG9Z"
+        width="100%"
+        height="152"
+        frameborder="0"
+        allow="encrypted-media"
+        loading="lazy"
+        title="Congratulations (feat. Bilal) — Mac Miller, en Spotify">
+      </iframe>
     </div>
   </section>
 
-  <!-- ================= GALERÍA ================= -->
-  <section id="gallery">
-    <span class="section-emoji">📸</span>
-    <h2 class="section-title">Nuestros momentos</h2>
-    <p class="section-lead">Toca cualquier foto para verla en grande</p>
-    <div class="gallery-grid" id="gallery-grid">
-      <div class="gallery-item big" data-full="">
-        <div><span class="placeholder-emoji">🖼️</span>Foto principal<br>(reemplázame)</div>
-      </div>
-      <div class="gallery-item" data-full="">
-        <div><span class="placeholder-emoji">💑</span>Foto 2</div>
-      </div>
-      <div class="gallery-item" data-full="">
-        <div><span class="placeholder-emoji">🥰</span>Foto 3</div>
-      </div>
-      <div class="gallery-item" data-full="">
-        <div><span class="placeholder-emoji">🌅</span>Foto 4</div>
-      </div>
-      <div class="gallery-item" data-full="">
-        <div><span class="placeholder-emoji">🎉</span>Foto 5</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= MÚSICA ================= -->
-  <section id="music">
-    <span class="section-emoji">🎵</span>
-    <h2 class="section-title">Nuestras canciones</h2>
-    <p class="section-lead">Una playlist con historia. Cambia de canción con las flechas</p>
-
-    <div class="player-card">
-      <span class="track-emoji" id="track-emoji">🎶</span>
-      <div class="track-title" id="track-title">Canción 1</div>
-      <div class="track-index" id="track-index">Pista 1 de 3</div>
-
-      <div class="embed-wrap" id="embed-wrap">
-        Aquí va el reproductor embebido (Spotify / YouTube) de la canción 1.<br>
-        Pega el link o el código &lt;iframe&gt; en este espacio.
-      </div>
-
-      <div class="track-note" id="track-note">
-        Escribe aquí por qué esta canción es especial para ustedes: un recuerdo, una frase, el momento en que la escucharon juntos por primera vez...
-      </div>
-
-      <div class="player-controls">
-        <button id="prev-btn">◀ Anterior</button>
-        <button id="next-btn">Siguiente ▶</button>
-      </div>
-      <div class="player-dots" id="player-dots"></div>
-    </div>
-  </section>
-
-  <!-- ================= FOOTER ================= -->
-  <section id="footer">
-    <span class="footer-heart">💗</span>
-    <p>Hecho con amor para ti, Maria Isabel.<br>Feliz aniversario, mi amor.</p>
+  <!-- ================= FRASE DE ISA ================= -->
+  <!-- Briefing sección 6: frase textual de Isa, tal cual la escribió por WhatsApp.
+       No corregir puntuación ni repeticiones. -->
+  <section id="quote">
+    <blockquote class="isa-quote">"Eres un tonto tonto tonto tonto amorcito lindo."</blockquote>
+    <p class="quote-attr">— Isa</p>
   </section>
 
 </main>
 
-<!-- Lightbox -->
-<div id="lightbox">
-  <button id="lightbox-close">&times;</button>
-  <img id="lightbox-img" src="" alt="" style="display:none;">
-</div>
-
 <script>
-  // ---------- Floating hearts / emoji background ----------
-  const floaterEmojis = ['💖','💕','✨','🌸','💗','💫'];
-  const floatersEl = document.getElementById('floaters');
-  const FLOATER_COUNT = 18;
-  for(let i=0;i<FLOATER_COUNT;i++){
-    const el = document.createElement('span');
-    el.className = 'floater';
-    el.textContent = floaterEmojis[Math.floor(Math.random()*floaterEmojis.length)];
-    el.style.left = Math.random()*100 + 'vw';
-    el.style.setProperty('--drift', (Math.random()*80-40) + 'px');
-    el.style.fontSize = (0.9 + Math.random()*1.4) + 'rem';
-    const duration = 10 + Math.random()*14;
-    el.style.animationDuration = duration + 's';
-    el.style.animationDelay = (-Math.random()*duration) + 's';
-    floatersEl.appendChild(el);
-  }
+  // ---------------------------------------------------------------
+  // Datos duros del briefing (no recalcular, no redondear distinto)
+  // ---------------------------------------------------------------
+  const LIMA   = { lat: -12.0728, lon: -77.0680 }; // Pueblo Libre
+  const HUARAZ = { lat:  -9.5320, lon: -77.5295 }; // Plaza de Belén
+  // Distancia en línea recta (haversine): 287.0 km / 286 985 metros
+  const DISTANCIA_KM = 287.0;
+  const DIAS_MISMA_CIUDAD = 129;
+  const DIAS_DISTANCIA = 205;
 
-  // ---------- Counter ----------
-  const startDate = new Date('2025-10-18T00:00:00');
+  document.getElementById('stat-same').textContent = DIAS_MISMA_CIUDAD;
+  document.getElementById('stat-far').textContent = DIAS_DISTANCIA;
+  document.getElementById('stat-km').textContent = DISTANCIA_KM.toFixed(0);
+  document.getElementById('map-distance-label').textContent = DISTANCIA_KM.toFixed(0) + ' km';
 
-  function updateCounter(){
+  // ---------------------------------------------------------------
+  // Contador en vivo, desde el inicio de la relación, hora de Perú fija
+  // ---------------------------------------------------------------
+  const START = new Date('2025-10-18T23:30:00-05:00');
+
+  function pad(n){ return String(n).padStart(2,'0'); }
+
+  function updateMainCounter(){
     const now = new Date();
-    let diffMs = now - startDate;
+    let diffMs = now - START;
     if(diffMs < 0) diffMs = 0;
-
-    const totalMinutes = Math.floor(diffMs / 60000);
-    const totalHours = Math.floor(totalMinutes / 60);
-    const totalDaysFull = Math.floor(totalHours / 24);
-
-    // months/days as calendar-aware breakdown
-    let months = (now.getFullYear() - startDate.getFullYear()) * 12 + (now.getMonth() - startDate.getMonth());
-    let anchor = new Date(startDate);
-    anchor.setMonth(anchor.getMonth() + months);
-    if(anchor > now){
-      months--;
-      anchor = new Date(startDate);
-      anchor.setMonth(anchor.getMonth() + months);
-    }
-    const remainderMs = now - anchor;
-    const days = Math.floor(remainderMs / (1000*60*60*24));
-    const hours = Math.floor((remainderMs / (1000*60*60)) % 24);
-    const mins = Math.floor((remainderMs / (1000*60)) % 60);
-
-    document.getElementById('c-months').textContent = Math.max(months,0);
-    document.getElementById('c-days').textContent = Math.max(days,0);
-    document.getElementById('c-hours').textContent = Math.max(hours,0);
-    document.getElementById('c-mins').textContent = Math.max(mins,0);
+    const totalSeconds = Math.floor(diffMs / 1000);
+    const days = Math.floor(totalSeconds / 86400);
+    const hours = Math.floor((totalSeconds % 86400) / 3600);
+    const mins = Math.floor((totalSeconds % 3600) / 60);
+    const secs = totalSeconds % 60;
+    document.getElementById('c-days').textContent = days;
+    document.getElementById('c-hours').textContent = pad(hours);
+    document.getElementById('c-mins').textContent = pad(mins);
+    document.getElementById('c-secs').textContent = pad(secs);
   }
-  updateCounter();
-  setInterval(updateCounter, 1000*30);
+  updateMainCounter(); // valor calculado de inmediato, sin esperar el primer setInterval
+  setInterval(updateMainCounter, 1000);
 
-  // ---------- Gallery lightbox ----------
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImg = document.getElementById('lightbox-img');
-  document.querySelectorAll('.gallery-item').forEach(item => {
-    item.addEventListener('click', () => {
-      const full = item.getAttribute('data-full');
-      const img = item.querySelector('img');
-      const src = full || (img ? img.src : '');
-      if(!src) return; // placeholder, nothing to open yet
-      lightboxImg.src = src;
-      lightboxImg.style.display = 'block';
-      lightbox.classList.add('open');
-    });
-  });
-  document.getElementById('lightbox-close').addEventListener('click', () => {
-    lightbox.classList.remove('open');
-    lightboxImg.src = '';
-  });
-  lightbox.addEventListener('click', (e) => {
-    if(e.target === lightbox){
-      lightbox.classList.remove('open');
-      lightboxImg.src = '';
-    }
-  });
-
-  // ---------- Music player ----------
-  // Reemplaza cada "embed" con el iframe real de Spotify/YouTube cuando lo tengas.
-  // Spotify: pega el link "Compartir > Insertar" (embed URL tipo https://open.spotify.com/embed/track/...)
-  // YouTube: usa https://www.youtube.com/embed/VIDEO_ID
-  const tracks = [
-    {
-      title: 'Canción 1',
-      emoji: '🎶',
-      embed: '<div>Aquí va el reproductor embebido (Spotify / YouTube) de la canción 1.<br>Pega el link o el código &lt;iframe&gt; en este espacio.</div>',
-      note: 'Escribe aquí por qué esta canción es especial para ustedes: un recuerdo, una frase, el momento en que la escucharon juntos por primera vez...'
-    },
-    {
-      title: 'Canción 2',
-      emoji: '🎧',
-      embed: '<div>Espacio para la segunda canción especial.</div>',
-      note: 'Cuenta aquí la historia detrás de esta segunda canción.'
-    },
-    {
-      title: 'Canción 3',
-      emoji: '💿',
-      embed: '<div>Espacio para la tercera canción especial.</div>',
-      note: 'Y aquí la historia de la tercera canción, la que quieras que cierre el momento.'
-    }
+  // ---------------------------------------------------------------
+  // Ahora mismo — rutina diaria, según la hora real del visitante
+  // ---------------------------------------------------------------
+  const rutina = [
+    { hora: 0,  el: "Ale se queda dormido primero — la universidad y el gimnasio le ganan.",
+                ella: "Isa sigue despierta un rato más." },
+    { hora: 6,  el: "Ale ya está despierto, alistándose para la universidad.",
+                ella: "Isa todavía duerme. Antes se despertaba primero — hasta que llegó la Alexa a poner sus alarmas." },
+    // [PENDIENTE] Ale debe mandar qué hace cada uno a las 11:00 am.
+    { hora: 11, pending: true },
+    // [PENDIENTE] Ale debe mandar qué hace cada uno a la 1:00 pm.
+    { hora: 13, pending: true },
+    // [PENDIENTE] Ale debe mandar qué hace cada uno a las 4:00 pm.
+    { hora: 16, pending: true },
+    { hora: 20, el: "Ale vuelve de la universidad.",
+                ella: "Isa vuelve del gimnasio." },
+    { hora: 21, el: "Ale espera.",
+                ella: "Isa se lava la cara. Él espera a que termine, siempre." },
+    { hora: 23, el: "Ale llama.",
+                ella: "Isa contesta. Es la llamada de todas las noches, a las 11." },
   ];
 
-  let currentTrack = 0;
-  const trackTitleEl = document.getElementById('track-title');
-  const trackIndexEl = document.getElementById('track-index');
-  const trackEmojiEl = document.getElementById('track-emoji');
-  const embedWrapEl = document.getElementById('embed-wrap');
-  const trackNoteEl = document.getElementById('track-note');
-  const dotsEl = document.getElementById('player-dots');
+  function getCurrentPair(h){
+    let current = rutina[0];
+    for(let i = 0; i < rutina.length; i++){
+      if(rutina[i].hora <= h) current = rutina[i];
+      else break;
+    }
+    return current;
+  }
 
-  function renderDots(){
-    dotsEl.innerHTML = '';
-    tracks.forEach((_, i) => {
-      const dot = document.createElement('span');
-      if(i === currentTrack) dot.classList.add('active');
-      dotsEl.appendChild(dot);
+  function renderNow(){
+    const h = new Date().getHours();
+    const current = getCurrentPair(h);
+
+    document.getElementById('now-hour-label').textContent = pad(current.hora) + ':00';
+    const nowElEl = document.getElementById('now-el');
+    const nowEllaEl = document.getElementById('now-ella');
+    if(current.pending){
+      nowElEl.textContent = 'Pendiente.';
+      nowElEl.classList.add('pending-note');
+      nowEllaEl.textContent = 'Pendiente.';
+      nowEllaEl.classList.add('pending-note');
+    } else {
+      nowElEl.textContent = current.el;
+      nowElEl.classList.remove('pending-note');
+      nowEllaEl.textContent = current.ella;
+      nowEllaEl.classList.remove('pending-note');
+    }
+
+    const othersEl = document.getElementById('now-others-list');
+    othersEl.innerHTML = '';
+    rutina.filter(r => r.hora !== current.hora).forEach(r => {
+      const row = document.createElement('div');
+      row.className = 'now-row';
+      const hourEl = document.createElement('div');
+      hourEl.className = 'now-row-hour';
+      hourEl.textContent = pad(r.hora) + ':00';
+      row.appendChild(hourEl);
+      if(r.pending){
+        const p = document.createElement('p');
+        p.className = 'pending-note';
+        p.textContent = 'Pendiente.';
+        row.appendChild(p);
+      } else {
+        const pEl = document.createElement('p');
+        pEl.textContent = 'Ale: ' + r.el;
+        const pElla = document.createElement('p');
+        pElla.textContent = 'Isa: ' + r.ella;
+        row.appendChild(pEl);
+        row.appendChild(pElla);
+      }
+      othersEl.appendChild(row);
     });
   }
-
-  function renderTrack(){
-    const t = tracks[currentTrack];
-    trackTitleEl.textContent = t.title;
-    trackIndexEl.textContent = `Pista ${currentTrack + 1} de ${tracks.length}`;
-    trackEmojiEl.textContent = t.emoji;
-    embedWrapEl.innerHTML = t.embed;
-    trackNoteEl.textContent = t.note;
-    renderDots();
-  }
-
-  document.getElementById('next-btn').addEventListener('click', () => {
-    currentTrack = (currentTrack + 1) % tracks.length;
-    renderTrack();
-  });
-  document.getElementById('prev-btn').addEventListener('click', () => {
-    currentTrack = (currentTrack - 1 + tracks.length) % tracks.length;
-    renderTrack();
-  });
-
-  renderTrack();
+  renderNow();
+  setInterval(renderNow, 60 * 1000);
 </script>
 
 </body>
