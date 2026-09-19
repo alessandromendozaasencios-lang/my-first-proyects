@@ -583,6 +583,7 @@
   // real del visitante. La constante en cada bloque: piensa en ella.
   // ---------------------------------------------------------------
   const rutina = [
+    { hora: 0,  texto: "Estoy durmiendo en llamada con Isa." },
     { hora: 6,  texto: "Me despierto y me voy a la universidad." },
     { hora: 11, texto: "Me estoy quedando dormido en clase, pensando en ti." },
     { hora: 13, texto: "Vuelvo a casa emocionado porque por fin terminaron mis clases y ya puedo hablar contigo." },
@@ -592,7 +593,7 @@
   ];
 
   function getCurrentBlock(h){
-    let current = rutina[rutina.length - 1]; // antes de las 6am sigue corriendo el bloque de las 23:00
+    let current = rutina[rutina.length - 1]; // por si acaso, aunque hora:0 ya cubre el resto de la madrugada
     for(let i = 0; i < rutina.length; i++){
       if(rutina[i].hora <= h) current = rutina[i];
       else break;
