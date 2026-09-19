@@ -8,21 +8,23 @@
 <title>Isa — once meses</title>
 <style>
   :root{
-    --night-900:#101a30;
-    --night-800:#182544;
-    --night-700:#23355c;
-    --pink-pale:#f3d9dd;
-    --pink-muted:#c9a3ab;
-    --border:rgba(243,217,221,0.16);
-    --text-light:#efe9e3;
-    --muted:#8b96b3;
+    --pink-50:#fdf2f5;
+    --pink-100:#f8e2e8;
+    --pink-border:#f0cdd6;
+    --pink-accent:#d9a3b0;
+    --ink:#3a2c35;
+    --muted:#9c7f8c;
+    --blue-deep:#1f3a63;
+    --blue-deep-2:#2c4d7a;
+    --on-dark-text:#f3e8ec;
+    --on-dark-accent:#f6d9e0;
   }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
   body{
     font-family:'Georgia','Times New Roman',serif;
-    background:linear-gradient(180deg,var(--night-900) 0%,var(--night-800) 45%,var(--night-900) 100%);
-    color:var(--text-light);
+    background:linear-gradient(180deg,var(--pink-50) 0%,var(--pink-100) 45%,var(--pink-50) 100%);
+    color:var(--ink);
     overflow-x:hidden;
     min-height:100vh;
   }
@@ -35,7 +37,7 @@
 
   section{
     padding:56px 0;
-    border-bottom:1px solid var(--border);
+    border-bottom:1px solid var(--pink-border);
   }
   section:last-of-type{ border-bottom:none; }
 
@@ -43,7 +45,7 @@
     letter-spacing:0.28em;
     text-transform:uppercase;
     font-size:0.7rem;
-    color:var(--pink-muted);
+    color:var(--pink-accent);
     margin-bottom:14px;
     text-align:center;
   }
@@ -61,12 +63,12 @@
   h1.hero-title{
     font-size:clamp(2.4rem,8vw,3.8rem);
     margin:0 0 6px;
-    color:var(--pink-pale);
+    color:var(--blue-deep);
     line-height:1.1;
   }
   .hero-sub{
     font-size:1.4rem;
-    color:var(--pink-muted);
+    color:var(--pink-accent);
     margin:0 0 26px;
   }
   .hero-date{
@@ -78,7 +80,7 @@
   h2.section-title{
     text-align:center;
     font-size:clamp(1.4rem,4vw,1.9rem);
-    color:var(--text-light);
+    color:var(--ink);
     margin:0 0 8px;
   }
   .section-lead{
@@ -97,8 +99,8 @@
     margin:0 auto;
   }
   .counter-box{
-    background:rgba(255,255,255,0.04);
-    border:1px solid var(--border);
+    background:rgba(255,255,255,0.55);
+    border:1px solid var(--pink-border);
     border-radius:16px;
     padding:16px 4px;
     text-align:center;
@@ -106,7 +108,7 @@
   .counter-num{
     font-size:clamp(1.5rem,5vw,2.2rem);
     font-weight:bold;
-    color:var(--pink-pale);
+    color:var(--blue-deep);
     display:block;
     font-variant-numeric:tabular-nums;
   }
@@ -125,15 +127,14 @@
     margin-top:26px;
   }
   .fixed-stat{
-    background:var(--night-800);
-    border:1px solid var(--border);
-    color:var(--text-light);
+    background:var(--blue-deep);
+    color:var(--on-dark-text);
     border-radius:999px;
     padding:8px 16px;
     font-size:0.78rem;
     letter-spacing:0.02em;
   }
-  .fixed-stat b{ color:var(--pink-pale); font-variant-numeric:tabular-nums; }
+  .fixed-stat b{ color:var(--on-dark-accent); font-variant-numeric:tabular-nums; }
 
   .hitos-list{
     list-style:none;
@@ -149,16 +150,16 @@
     justify-content:space-between;
     gap:12px;
     font-size:0.85rem;
-    border-top:1px solid var(--border);
+    border-top:1px solid var(--pink-border);
     padding-top:8px;
   }
-  .hitos-list li span:first-child{ color:var(--pink-pale); font-weight:bold; font-variant-numeric:tabular-nums; }
+  .hitos-list li span:first-child{ color:var(--blue-deep); font-weight:bold; font-variant-numeric:tabular-nums; }
   .hitos-list li span:last-child{ color:var(--muted); text-align:right; }
 
   /* ---------- Map ---------- */
   .map-wrap{
-    background:rgba(255,255,255,0.04);
-    border:1px solid var(--border);
+    background:rgba(255,255,255,0.55);
+    border:1px solid var(--pink-border);
     border-radius:20px;
     padding:20px;
   }
@@ -172,18 +173,17 @@
 
   /* ---------- Ahora mismo ---------- */
   .now-current{
-    background:linear-gradient(135deg,var(--night-800),var(--night-700));
-    border:1px solid var(--border);
+    background:linear-gradient(135deg,var(--blue-deep),var(--blue-deep-2));
     border-radius:20px;
     padding:28px 22px;
-    color:var(--text-light);
+    color:var(--on-dark-text);
   }
   .now-hour{
     text-align:center;
     font-size:0.75rem;
     letter-spacing:0.2em;
     text-transform:uppercase;
-    color:var(--pink-muted);
+    color:var(--on-dark-accent);
     margin-bottom:18px;
   }
   .now-pair{
@@ -201,7 +201,7 @@
     font-size:0.7rem;
     text-transform:uppercase;
     letter-spacing:0.12em;
-    color:var(--pink-pale);
+    color:var(--on-dark-accent);
     margin-bottom:8px;
   }
   .now-col p{
@@ -226,12 +226,12 @@
     gap:10px;
     align-items:start;
     padding:10px 0;
-    border-top:1px solid var(--border);
+    border-top:1px solid var(--pink-border);
     font-size:0.82rem;
   }
   .now-row-hour{
     font-weight:bold;
-    color:var(--pink-pale);
+    color:var(--blue-deep);
     font-variant-numeric:tabular-nums;
   }
   .now-row p{ margin:0; line-height:1.4; }
@@ -245,7 +245,7 @@
     border-radius:14px;
     overflow:hidden;
     max-width:100%;
-    border:1px solid var(--border);
+    border:1px solid var(--pink-border);
   }
   .spotify-embed-wrap iframe{
     width:100%;
@@ -262,8 +262,8 @@
     gap:14px;
   }
   .countdown-box{
-    background:rgba(255,255,255,0.04);
-    border:1px solid var(--border);
+    background:rgba(255,255,255,0.55);
+    border:1px solid var(--pink-border);
     border-radius:16px;
     padding:22px 14px;
     text-align:center;
@@ -271,7 +271,7 @@
   .countdown-num{
     font-size:clamp(1.8rem,6vw,2.6rem);
     font-weight:bold;
-    color:var(--pink-pale);
+    color:var(--blue-deep);
     font-variant-numeric:tabular-nums;
     display:block;
   }
@@ -284,12 +284,12 @@
   }
   .countdown-label{
     font-size:0.85rem;
-    color:var(--text-light);
+    color:var(--ink);
   }
 
   /* ---------- La carta ---------- */
   .letter-placeholder{
-    border:1px dashed var(--border);
+    border:1px dashed var(--pink-border);
     border-radius:16px;
     padding:36px 22px;
     text-align:center;
@@ -305,7 +305,7 @@
     font-style:italic;
     font-size:clamp(1.2rem,4.5vw,1.6rem);
     line-height:1.5;
-    color:var(--pink-pale);
+    color:var(--blue-deep);
     max-width:520px;
     margin:0 auto;
   }
@@ -367,14 +367,14 @@
     <p class="section-lead">Lima y Huaraz, en línea recta</p>
     <div class="map-wrap">
       <svg viewBox="0 0 320 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mapa esquemático entre Lima y Huaraz, 287 kilómetros de distancia">
-        <line x1="70" y1="150" x2="240" y2="45" stroke="#c9a3ab" stroke-width="2" stroke-dasharray="6 6"/>
-        <circle cx="70" cy="150" r="7" fill="#f3d9dd"/>
-        <circle cx="240" cy="45" r="7" fill="#f3d9dd"/>
-        <text x="70" y="172" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#efe9e3">Lima</text>
-        <text x="70" y="186" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#8b96b3">Pueblo Libre</text>
-        <text x="240" y="30" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#efe9e3">Huaraz</text>
-        <text x="240" y="20" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#8b96b3">Plaza de Belén</text>
-        <text id="map-distance-label" x="155" y="90" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="bold" fill="#f3d9dd">287 km</text>
+        <line x1="70" y1="150" x2="240" y2="45" stroke="#d9a3b0" stroke-width="2" stroke-dasharray="6 6"/>
+        <circle cx="70" cy="150" r="7" fill="#1f3a63"/>
+        <circle cx="240" cy="45" r="7" fill="#1f3a63"/>
+        <text x="70" y="172" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#3a2c35">Lima</text>
+        <text x="70" y="186" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#9c7f8c">Pueblo Libre</text>
+        <text x="240" y="30" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#3a2c35">Huaraz</text>
+        <text x="240" y="20" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#9c7f8c">Plaza de Belén</text>
+        <text id="map-distance-label" x="155" y="90" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="bold" fill="#1f3a63">287 km</text>
       </svg>
     </div>
     <p class="map-caption">Distancia en línea recta (haversine).</p>
