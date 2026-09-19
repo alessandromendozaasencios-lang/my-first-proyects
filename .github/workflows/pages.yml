@@ -2,7 +2,7 @@ name: Deploy anniversary page to GitHub Pages
 
 on:
   push:
-    branches: [claude/anniversary-webpage-ww22zf]
+    branches: [main]
     paths: ["publicar/**"]
   workflow_dispatch:
 
